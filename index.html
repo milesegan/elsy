@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>elsy</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="elsy.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+
+  <body>
+
+    <h1>elsy, the l-system explorer</h1>
+
+    <form id="lsystem">
+      <table>
+        <tr>
+          <th>rules</th>
+          <td>
+            <textarea id="rules" name="rules">X -> F-[[X]+X]+F[+FX]-X
+F -> FF
+            </textarea>
+          </td>
+        </tr>
+        <tr>
+          <th>seed</th>
+          <td><input id="seed" name="seed" value="X"/></td>
+        </tr>
+        <tr>
+          <th>angle</th>
+          <td>
+            <input name="angle" id="angle" value="25"/>
+          </td>
+        </tr>
+        <tr>
+          <th>iterations</th>
+          <td>
+            <input name="iterations" id="iterations" value="5"/>
+          </td>
+        </tr>
+      </table>
+      <input type="submit" id="render" value="render"/>
+    </form>
+
+    <canvas height="500" width="500"></canvas>
+
+  </body>
+
+</html>
