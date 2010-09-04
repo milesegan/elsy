@@ -16,27 +16,32 @@
     <form id="lsystem">
       <table>
         <tr>
+          <th>preset</th>
+          <td>
+            <select name="preset" id="preset">
+            </select>
+          </td>
+        </tr>
+        <tr>
           <th>rules</th>
           <td>
-            <textarea id="rules" name="rules">X -> F-[[X]+X]+F[+FX]-X
-F -> FF
-            </textarea>
+            <textarea id="rules" name="rules"></textarea>
           </td>
         </tr>
         <tr>
           <th>seed</th>
-          <td><input id="seed" name="seed" value="X"/></td>
+          <td><input id="seed" name="seed"/></td>
         </tr>
         <tr>
           <th>angle</th>
           <td>
-            <input name="angle" id="angle" value="25"/>
+            <input name="angle" id="angle"/>
           </td>
         </tr>
         <tr>
           <th>iterations</th>
           <td>
-            <input name="iterations" id="iterations" value="5"/>
+            <input name="iterations" id="iterations"/>
           </td>
         </tr>
       </table>
