@@ -5,23 +5,40 @@ body {
    font-family: sans-serif;
 }
 
-h1 { margin: 0 0 0.5em 0; text-align: center; font-weight: normal }
+h1 { margin: 0 0 0.75em 0; text-align: center; font-weight: normal }
 
-canvas { padding: 10px; background: white; }
+canvas { 
+   padding: 10px; background: white; 
+   border-radius: 1em;
+}
 
-form { float: left; }
+form { float: left; margin-right: 1em; }
+
+#legend {
+   clear: both;
+   float: left;
+   background: white;
+   color: #6bf;
+   margin: 1em;
+   padding: 0.5em 1em;
+   border-radius: 1em;
+   font-size: 90%;
+}
+#legend thead th { text-align: left }
+#legend th { padding: 0.25em 1em 0.25em 0; }
+#legend td { color: black; padding: 0em; font-weight: normal; }
 
 input[type="text"], textarea {
    border-radius: 0.5em;
    padding: 0.5em 0.75em;
    outline: 0;
    border: 0;
-   background: #8df;
+   background: #9ef;
 }
 
-th { 
+form th { 
    font-weight: normal;
    text-align: right; 
    vertical-align: middle; 
 }
-th, td { padding: 0.5em 0.25em 0.5em 0; }
+form th, td { padding: 0.5em 0.25em 0em 0; }
