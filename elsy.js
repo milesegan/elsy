@@ -1,17 +1,26 @@
 // l-system generator
 
-function LSystem(rules, seed, angle, name) {
+function LSystem(rules, seed, angle, name, defaultIterations) {
     this.rules = rules;
     this.seed = seed;
     this.angle = angle;
     this.name = name;
+    this.defaultIterations = defaultIterations || 4;
 }
 
 LSystem.presets = [
-    new LSystem({ F: "F+F-F-F+F" }, "F", 90, "koch curve"),
-    new LSystem({ A: "B-A-B", B: "A+B+A" }, "A", 60, "sierpinski triangle"),
-    new LSystem({ X: "X+YF", Y: "FX-Y" }, "FX", 90, "dragon curve"),
-    new LSystem({ X: "F-[[X]+X]+F[+FX]-X", F: "FF" }, "X", 25, "fractal plant")
+    new LSystem({ f: "f+f-f-f+f" }, "f", 90, "koch curve"),
+    new LSystem({ x: "yf+xf+y", y: "xf-yf-x" }, "x", 60, "sierpinski triangle", 7),
+    new LSystem({ f: "f+f-f-f-g+f+f+f-f", g: "ggg" }, "f", 90, "sierpinski carpet"),
+    new LSystem({ x: "x+yf", y: "fx-y" }, "fx", 90, "dragon curve", 9),
+    new LSystem({ f: "f-f++f+f-f-f" }, "f-f-f-f-f", 360 / 5, "pentigree"),
+    new LSystem({ x: "-yf+xfx+fy-", y: "+xf-yfy-fx+" }, "x", 90, "hilbert", 6),
+    new LSystem({ x: "fx+fx+fxfy-fy-", y: "+fx+fxfy-fy-fy", f: "" }, "fx", 90, "cross", 5),
+    new LSystem({ x: "x+yf++yf-fx--fxfx-yf+", y: "-fx+yfyf++yf+fx--fx-y" }, "x", 60, "peano-gosper"),
+    new LSystem({ f: "ff+f+f+f+ff" }, "f+f+f+f", 90, "box"),
+    new LSystem({ x: "f-[[x]+x]+f[+fx]-x", f: "ff" }, "x", 25, "plant 01", 5),
+    new LSystem({ x: "f[+x]f[-x]+x", f: "ff" }, "x", 360 / 18, "plant 02", 5)
+
 ];
 
 LSystem.prototype.generate = function(iterations) {
@@ -20,10 +29,12 @@ LSystem.prototype.generate = function(iterations) {
     for (i = 0; i < iterations; i ++) {
         var newprod = "";
         for (p = 0; p < prod.length; p++) {
-            if (this.rules[prod[p]])
+            if (this.rules[prod[p]] == undefined) {
+                newprod += prod[p];
+            }
+            else {
                 newprod += this.rules[prod[p]];
-            else
-                newprod += prod[p]
+            }
         }
         prod = newprod;
     }
@@ -42,6 +53,7 @@ LSystem.prototype.compute = function(iterations) {
     var stack = [];
 
     for (i = 0; i < prod.length; i++) {
+        path.push({ x: p.x, y: p.y });
         switch (prod[i]) {
         case "[":
             stack.push({ x: p.x, y: p.y, a: a });
@@ -60,8 +72,7 @@ LSystem.prototype.compute = function(iterations) {
         case "+":
             a += aStep;
             break;
-        default:
-            path.push({ x: p.x, y: p.y });
+        case "f":
             p.x += 1 * Math.cos(a);
             p.y += 1 * Math.sin(a);
             this.maxX = Math.max(p.x, this.maxX);
@@ -81,8 +92,8 @@ LSystem.prototype.draw = function(canvas, iterations) {
     canvas.width = canvas.width; // "reset" the canvas
     var ctx = canvas.getContext("2d");
     ctx.fillStyle = "#fff";
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "#000";
     ctx.moveTo(0, 0);
     var xRatio = canvas.width / (this.maxX - this.minX);
     var yRatio = canvas.height / (this.maxY - this.minY);
@@ -127,7 +138,7 @@ LSystem.prototype.draw = function(canvas, iterations) {
         $("#rules").val(rules.join("\n"));
         $("#seed").val(preset.seed);
         $("#angle").val(preset.angle);
-        $("#iterations").val(4);
+        $("#iterations").val(preset.defaultIterations);
         render();
     }
 

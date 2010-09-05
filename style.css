@@ -1,8 +1,27 @@
 body {
-   color: black; background: white;
-   margin: 0; padding: 1em;
+   color: black; background: #eee;
+   margin: 0 auto; padding: 0.25em 1em;
+   width: 50em;
+   font-family: sans-serif;
 }
 
-canvas { border: 1px solid #aaa; }
+h1 { margin: 0 0 0.5em 0; text-align: center; font-weight: normal }
+
+canvas { padding: 10px; background: white; }
 
 form { float: left; }
+
+input[type="text"], textarea {
+   border-radius: 0.5em;
+   padding: 0.5em 0.75em;
+   outline: 0;
+   border: 0;
+   background: #8df;
+}
+
+th { 
+   font-weight: normal;
+   text-align: right; 
+   vertical-align: middle; 
+}
+th, td { padding: 0.5em 0.25em 0.5em 0; }
