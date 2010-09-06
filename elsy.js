@@ -91,15 +91,15 @@ LSystem.prototype.draw = function(canvas, iterations) {
     this.compute(iterations);
     canvas.width = canvas.width; // "reset" the canvas
     var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#fff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = "#000";
-    ctx.moveTo(0, 0);
     var xRatio = canvas.width / (this.maxX - this.minX);
     var yRatio = canvas.height / (this.maxY - this.minY);
     ctx.translate(-this.minX * xRatio, -this.minY * yRatio);
 
     for (p = 0; p < this.paths.length; p++) {
+        ctx.beginPath();
         var path = this.paths[p];
         ctx.moveTo(path[0].x * xRatio, path[0].y * yRatio);
         for (i = 1; i < path.length; i++) {
