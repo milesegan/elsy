@@ -9,18 +9,17 @@ function LSystem(rules, seed, angle, name, defaultIterations) {
 }
 
 LSystem.presets = [
+    new LSystem({ x: "f-[[x]+x]+f[+fx]-x", f: "ff" }, "x", 25, "plant 01", 6),
+    new LSystem({ x: "f[+x]f[-x]+x", f: "ff" }, "x", 360 / 18, "plant 02", 6),
     new LSystem({ f: "f+f-f-f+f" }, "f", 90, "koch curve"),
-    new LSystem({ x: "yf+xf+y", y: "xf-yf-x" }, "x", 60, "sierpinski triangle", 7),
+    new LSystem({ x: "yf+xf+y", y: "xf-yf-x" }, "x", 60, "sierpinski triangle", 8),
     new LSystem({ f: "f+f-f-f-g+f+f+f-f", g: "ggg" }, "f", 90, "sierpinski carpet"),
     new LSystem({ x: "x+yf", y: "fx-y" }, "fx", 90, "dragon curve", 9),
     new LSystem({ f: "f-f++f+f-f-f" }, "f-f-f-f-f", 360 / 5, "pentigree"),
     new LSystem({ x: "-yf+xfx+fy-", y: "+xf-yfy-fx+" }, "x", 90, "hilbert", 6),
     new LSystem({ x: "fx+fx+fxfy-fy-", y: "+fx+fxfy-fy-fy", f: "" }, "fx", 90, "cross", 5),
     new LSystem({ x: "x+yf++yf-fx--fxfx-yf+", y: "-fx+yfyf++yf+fx--fx-y" }, "x", 60, "peano-gosper"),
-    new LSystem({ f: "ff+f+f+f+ff" }, "f+f+f+f", 90, "box"),
-    new LSystem({ x: "f-[[x]+x]+f[+fx]-x", f: "ff" }, "x", 25, "plant 01", 5),
-    new LSystem({ x: "f[+x]f[-x]+x", f: "ff" }, "x", 360 / 18, "plant 02", 5)
-
+    new LSystem({ f: "ff+f+f+f+ff" }, "f+f+f+f", 90, "box")
 ];
 
 LSystem.prototype.generate = function(iterations) {
@@ -160,6 +159,18 @@ LSystem.prototype.draw = function(canvas, iterations) {
         $("#preset").change(function() { 
             var selected = $(this).find("option[selected=true]");
             loadPreset(selected.attr('value'));
+        });
+
+        $("#less-iter").click(function () {
+            var newv = parseInt($("#iterations").val()) - 1;
+            $("#iterations").val(newv);
+            render();
+        });
+
+        $("#more-iter").click(function () {
+            var newv = parseInt($("#iterations").val()) + 1;
+            $("#iterations").val(newv);
+            render();
         });
 
         loadPreset(0);

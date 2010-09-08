@@ -30,18 +30,20 @@
         </tr>
         <tr>
           <th>seed</th>
-          <td><input type="text" id="seed" name="seed"/></td>
+          <td><input type="text" id="seed" name="seed" size="10" maxlenth="10"/></td>
         </tr>
         <tr>
           <th>angle</th>
           <td>
-            <input type="text" name="angle" id="angle"/>
+            <input type="text" name="angle" id="angle" size="3" maxlength="3"/>
           </td>
         </tr>
         <tr>
           <th>iterations</th>
-          <td>
-            <input type="text" name="iterations" id="iterations"/>
+          <td class="iterations">
+            <span class="arrow" id="less-iter">&lt;</span>
+            <input type="text" name="iterations" id="iterations" size="2" maxlength="2"/>
+            <span class="arrow" id="more-iter">&gt;</span>
           </td>
         </tr>
       </table>

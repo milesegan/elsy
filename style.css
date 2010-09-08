@@ -28,12 +28,19 @@ form { float: left; margin-right: 1em; }
 #legend th { padding: 0.25em 1em 0.25em 0; }
 #legend td { color: black; padding: 0em; font-weight: normal; }
 
-input[type="text"], textarea {
+input[type="text"], textarea, .input {
    border-radius: 0.5em;
    padding: 0.5em 0.75em;
    outline: 0;
    border: 0;
    background: #9ef;
+}
+
+.arrow {
+}
+.arrow:hover { 
+   cursor: pointer; 
+   color: #6bf;
 }
 
 form th { 
