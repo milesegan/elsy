@@ -1,7 +1,7 @@
 body {
    color: black; background: #eee;
-   margin: 0 auto; padding: 0.25em 1em;
-   width: 50em;
+   margin: 0 auto; padding: 1em;
+   width: 55em;
    font-family: sans-serif;
 }
 
@@ -10,6 +10,7 @@ h1 { margin: 0 0 0.75em 0; text-align: center; font-weight: normal }
 canvas { 
    padding: 10px; background: white; 
    border-radius: 1em;
+   -moz-border-radius: 1em;
 }
 
 form { float: left; margin-right: 1em; }
@@ -22,6 +23,7 @@ form { float: left; margin-right: 1em; }
    margin: 1em;
    padding: 0.5em 1em;
    border-radius: 1em;
+   -moz-border-radius: 1em;
    font-size: 90%;
 }
 #legend thead th { text-align: left }
@@ -30,6 +32,7 @@ form { float: left; margin-right: 1em; }
 
 input[type="text"], textarea, .input {
    border-radius: 0.5em;
+   -moz-border-radius: 0.5em;
    padding: 0.5em 0.75em;
    outline: 0;
    border: 0;
