@@ -157,8 +157,7 @@ LSystem.prototype.draw = function(canvas, iterations) {
         });
 
         $("#preset").change(function() { 
-            var selected = $(this).find("option[selected=true]");
-            loadPreset(selected.attr('value'));
+            loadPreset($(this).val());
         });
 
         $("#less-iter").click(function () {
