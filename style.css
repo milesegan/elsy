@@ -46,9 +46,12 @@ input[type="text"], textarea, .input {
    color: #6bf;
 }
 
+form table { border-collapse: collapse }
 form th { 
    font-weight: normal;
    text-align: right; 
    vertical-align: middle; 
 }
-form th, td { padding: 0.5em 0.25em 0em 0; }
+form th, form td { padding: 0em 0.5em 0.25em 0em; }
+#angle { width: 2em }
+#iterations { width: 1em }
