@@ -1,43 +1,35 @@
 body {
-   color: black; background: #eee;
-   margin: 0 auto; padding: 1em;
-   width: 55em;
+   color: black; background: #ccc;
+   margin: 0 auto; padding: 10px;
+   width: 800px;
+   font-size: 16px;
    font-family: sans-serif;
 }
 
-h1 { margin: 0 0 0.75em 0; text-align: center; font-weight: normal }
+h1 { margin: 0 0 20px 0; text-align: center; font-weight: normal }
 
 canvas { 
    padding: 10px; background: white; 
-   border-radius: 1em;
-   -moz-border-radius: 1em;
+   border-radius: 10px;
+   border: 1px solid #bbb;
+   -moz-border-radius: 10px;
 }
-
-form { float: left; margin-right: 1em; }
 
 #legend {
    clear: both;
    float: left;
+   border: 1px solid #bbb;
    background: white;
    color: #6bf;
-   margin: 1em;
-   padding: 0.5em 1em;
-   border-radius: 1em;
-   -moz-border-radius: 1em;
+   margin: 20px 10px 0 30px;
+   padding: 5px 10px;
+   border-radius: 10px;
+   -moz-border-radius: 10px;
    font-size: 90%;
 }
 #legend thead th { text-align: left }
-#legend th { padding: 0.25em 1em 0.25em 0; }
-#legend td { color: black; padding: 0em; font-weight: normal; }
-
-input[type="text"], textarea, .input {
-   border-radius: 0.5em;
-   -moz-border-radius: 0.5em;
-   padding: 0.5em 0.75em;
-   outline: 0;
-   border: 0;
-   background: #9ef;
-}
+#legend th { padding: 3px 10px 3px 0; }
+#legend td { color: black; padding: 0px; font-weight: normal; }
 
 .arrow {
 }
@@ -46,12 +38,23 @@ input[type="text"], textarea, .input {
    color: #6bf;
 }
 
+form { float: left; margin-right: 10px; }
 form table { border-collapse: collapse }
 form th { 
    font-weight: normal;
    text-align: right; 
    vertical-align: middle; 
 }
-form th, form td { padding: 0em 0.5em 0.25em 0em; }
-#angle { width: 2em }
-#iterations { width: 1em }
+form th, form td { padding: 0px 5px 5px 0px; }
+form tr.submit td { text-align: center }
+input[type="text"], textarea, .input {
+   border-radius: 5px;
+   border: 1px solid #bbb;
+   -moz-border-radius: 5px;
+   padding: 5px 7px;
+   outline: 0;
+   border: 0;
+   background: #9ef;
+}
+#angle { width: 20px }
+#iterations { width: 10px }
